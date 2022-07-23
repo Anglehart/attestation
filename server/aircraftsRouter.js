@@ -14,7 +14,7 @@ router.post("/", function (request, response) {
       });
 });
 
-router.get("/", function (request, response) { //Показать всех пользователей
+router.get("/", function (request, response) {
   if(!request.body) return response.sendStatus(400);
   db.any('SELECT * FROM aircrafts;')
       .then(function (data) {
@@ -22,7 +22,7 @@ router.get("/", function (request, response) { //Показать всех по�
       })
 })
 
-router.delete("/id", function (request, response) { //Удалить пользователя по ID
+router.delete("/id", function (request, response) {
   db.any('DELETE FROM aircrafts WHERE aircraft_code = $1;', [request.query.code])
       .then(function (data) {
         return response.json(data);
@@ -32,7 +32,7 @@ router.delete("/id", function (request, response) { //Удалить польз�
       });
 });
 
-router.put("/", function (request, response) { //Изменить заказ
+router.put("/", function (request, response) {
   if(!request.body) return response.sendStatus(400);
   let t = request.body;
   db.one(`UPDATE aircrafts SET aircraft_code = $1, model = $2, range = $3 WHERE aircraft_code = $1`, [t.aircraft_code, t.model, t.range])
