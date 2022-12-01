@@ -1,0 +1,6 @@
+[submodule "attestation-backend"]
+	path = attestation-backend
+	url = https://github.com/Anglehart/attestation-backend.git
+[submodule "server"]
+	path = server
+	url = https://github.com/Anglehart/attestation-backend.git
